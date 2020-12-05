@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 )
 
@@ -34,7 +33,8 @@ func part1() {
 }
 
 func part2() {
-	list := sort.IntSlice{}
+	seatTaken := map[int]bool{}
+	minSeatID, maxSeatID := 9999, 0
 	for _, seat := range strings.Split(input, "\n") {
 		rl, rr := 0, 127
 		for _, v := range seat[0:7] {
@@ -53,13 +53,18 @@ func part2() {
 			}
 		}
 		seatID := rl*8 + cl
-		list = append(list, seatID)
+		seatTaken[seatID] = true
+		if seatID < minSeatID {
+			minSeatID = seatID
+		}
+		if seatID > maxSeatID {
+			maxSeatID = seatID
+		}
 	}
-	list.Sort()
 	seatID := 0
-	for i := 0; i < len(list)-1; i++ {
-		if list[i+1] != list[i]+1 {
-			seatID = list[i] + 1
+	for i := minSeatID; i < maxSeatID; i++ {
+		if !seatTaken[i] {
+			seatID = i
 			break
 		}
 	}
