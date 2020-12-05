@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"strings"
 )
@@ -35,7 +36,13 @@ func part1() {
 func part2() {
 	minSeatID, maxSeatID := 9999, 0
 	sum := 0
-	for _, seat := range strings.Split(input, "\n") {
+	reader := bufio.NewReader(strings.NewReader(input))
+
+	for {
+		seat, _, err := reader.ReadLine()
+		if err != nil {
+			break
+		}
 		rl, rr := 0, 127
 		for _, v := range seat[0:7] {
 			if rune(v) == 'F' {
