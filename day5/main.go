@@ -33,8 +33,8 @@ func part1() {
 }
 
 func part2() {
-	seatTaken := map[int]bool{}
 	minSeatID, maxSeatID := 9999, 0
+	sum := 0
 	for _, seat := range strings.Split(input, "\n") {
 		rl, rr := 0, 127
 		for _, v := range seat[0:7] {
@@ -53,21 +53,16 @@ func part2() {
 			}
 		}
 		seatID := rl*8 + cl
-		seatTaken[seatID] = true
+
 		if seatID < minSeatID {
 			minSeatID = seatID
 		}
 		if seatID > maxSeatID {
 			maxSeatID = seatID
 		}
+		sum += seatID
 	}
-	seatID := 0
-	for i := minSeatID; i < maxSeatID; i++ {
-		if !seatTaken[i] {
-			seatID = i
-			break
-		}
-	}
+	seatID := (maxSeatID-minSeatID+1)*(maxSeatID+minSeatID)/2 - sum
 	fmt.Println(seatID)
 }
 
