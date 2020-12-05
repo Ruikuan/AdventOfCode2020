@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// https://adventofcode.com/2020/day/5
+
 func part1() {
 	highest := 0
 	for _, seat := range strings.Split(input, "\n") {

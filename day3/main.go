@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// https://adventofcode.com/2020/day/3
+
 type downArg struct {
 	right int
 	step1 bool

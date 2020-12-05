@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// https://adventofcode.com/2020/day/4
+
 func part1() {
 	requiredFields := []string{"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
 	isValidPassport := func(fields map[string]bool) bool {
