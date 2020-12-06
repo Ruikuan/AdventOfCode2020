@@ -27,8 +27,40 @@ func part1() {
 	fmt.Println(sum)
 }
 
-func part2() {
+func countYesAndReset(gmap *[26]bool) int {
+	count := 0
+	for i, b := range *gmap {
+		if b {
+			count++
+		}
+		gmap[i] = true
+	}
+	return count
+}
 
+func part2() {
+	gmap := [26]bool{}
+	for i := 0; i < 26; i++ {
+		gmap[i] = true
+	}
+
+	sum := 0
+
+	for _, answer := range strings.Split(input, "\n") {
+		if answer == "" {
+			sum += countYesAndReset(&gmap)
+			continue
+		}
+		lmap := [26]bool{}
+		for _, a := range answer {
+			lmap[a-'a'] = true
+		}
+		for i := 0; i < 26; i++ {
+			gmap[i] = gmap[i] && lmap[i]
+		}
+	}
+	sum += countYesAndReset(&gmap)
+	fmt.Println(sum)
 }
 
 func main() {
