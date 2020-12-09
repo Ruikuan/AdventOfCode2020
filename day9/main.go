@@ -51,13 +51,13 @@ func part2() {
 			fmt.Println(min + max)
 			return
 		}
-		for sum < target {
+		for sum < target && r < len(nums) {
 			rVal, _ := strconv.Atoi(nums[r])
 			sum += rVal
 			slice = append(slice, rVal)
 			r++
 		}
-		for sum > target {
+		for sum > target && len(slice) > 0 {
 			sum -= slice[0]
 			slice = slice[1:]
 		}
