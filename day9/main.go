@@ -25,11 +25,8 @@ func part1() int {
 			if !isValid(&ring, ival) {
 				return ival
 			}
-			ring[idx%25] = ival
-
-		} else {
-			ring[idx] = ival
 		}
+		ring[idx%25] = ival
 	}
 	panic("no such number.")
 }
