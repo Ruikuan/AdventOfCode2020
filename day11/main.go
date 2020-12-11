@@ -5,6 +5,17 @@ import (
 	"strings"
 )
 
+var changes = [8][2]int{
+	{-1, -1},
+	{-1, 0},
+	{-1, 1},
+	{0, -1},
+	{0, 1},
+	{1, -1},
+	{1, 0},
+	{1, 1},
+}
+
 func getInput() [][]rune {
 	lines := strings.Split(input, "\n")
 	state := make([][]rune, len(lines))
@@ -16,16 +27,6 @@ func getInput() [][]rune {
 
 func applyRule(state [][]rune) [][]rune {
 	nextState := make([][]rune, len(state))
-	changes := [8][2]int{
-		{-1, -1},
-		{-1, 0},
-		{-1, 1},
-		{0, -1},
-		{0, 1},
-		{1, -1},
-		{1, 0},
-		{1, 1},
-	}
 	for i := 0; i < len(state); i++ {
 		l := len(state[i])
 		nextState[i] = make([]rune, l)
@@ -113,16 +114,6 @@ func part1() int {
 
 func applyRule2(state [][]rune) [][]rune {
 	nextState := make([][]rune, len(state))
-	changes := [8][2]int{
-		{-1, -1},
-		{-1, 0},
-		{-1, 1},
-		{0, -1},
-		{0, 1},
-		{1, -1},
-		{1, 0},
-		{1, 1},
-	}
 	for i := 0; i < len(state); i++ {
 		l := len(state[i])
 		nextState[i] = make([]rune, l)
