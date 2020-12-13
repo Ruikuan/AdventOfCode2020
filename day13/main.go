@@ -19,7 +19,11 @@ func part1() int {
 	wait := depart
 	bus := 0
 	for _, busID := range validBus {
-		w := busID - depart%busID
+		r := depart % busID
+		if r == 0 {
+			return 0
+		}
+		w := busID - r
 		if wait > w {
 			wait = w
 			bus = busID
