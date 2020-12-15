@@ -40,5 +40,5 @@ func part2() int {
 
 func main() {
 	fmt.Println(part1())
-	//fmt.Println(part2())
+	fmt.Println(part2())
 }
