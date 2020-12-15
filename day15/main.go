@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func part1() int {
+func takeTurn(turn int) int {
 	lastTurns := map[int]int{}
 	//preLastTurns := map[int]int{}
 	i := 0
@@ -19,7 +19,7 @@ func part1() int {
 	}
 	num = 0
 	i++
-	for i++; i <= 2020; i++ {
+	for i++; i <= turn; i++ {
 		next := 0
 		if lastTurns[num] != 0 {
 			next = i - 1 - lastTurns[num]
@@ -31,6 +31,16 @@ func part1() int {
 	}
 	return num
 }
+
+func part1() int {
+	return takeTurn(2020)
+}
+
+func part2() int {
+	return takeTurn(30000000)
+}
+
 func main() {
 	fmt.Println(part1())
+	fmt.Println(part2())
 }
