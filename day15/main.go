@@ -8,13 +8,11 @@ import (
 
 func takeTurn(turn int) int {
 	lastTurns := map[int]int{}
-	//preLastTurns := map[int]int{}
 	i := 0
 	num := 0
 	for _, v := range strings.Split(input, ",") {
 		i++
 		num, _ = strconv.Atoi(v)
-		//preLastTurns[num] = lastTurns[num]
 		lastTurns[num] = i
 	}
 	num = 0
@@ -42,5 +40,5 @@ func part2() int {
 
 func main() {
 	fmt.Println(part1())
-	fmt.Println(part2())
+	//fmt.Println(part2())
 }
